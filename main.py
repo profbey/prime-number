@@ -1,60 +1,51 @@
 # Examples: Find whether an entered number is prime or not.
 
-    
-
 print('This app checks if the number is prime or not')
 from math import sqrt
 
 
-def aralik_icin_sayi_al():
-    while True:
-        try:
-            aralik_icin_sayi_al = []
-
-            baslangic = int(input('enter first numb: '))
-            bitis = int(input('enter final numb: '))
-
-            if baslangic <= bitis:
-                for i in range(baslangic,bitis):
-                    aralik_icin_sayi_al = aralik_icin_sayi_al.append([i])
-                print(aralik_icin_sayi_al)
-
-            else:
-                print("Lütfen belirtilen aralıkta bir sayı giriniz.")
-        except ValueError:
-            print("Lütfen bir sayı giriniz.")
-
- 
-aralik_icin_sayi_al()
-
-
-
-
-
-
-
-
-
-'''
-
+def inputRangeFuction(initialNumb, finalNumb):                  # Modified function signature
+    """
+    This function generates a list of numbers within a given range.
+    """
+    try:
+        rangeDic = []                                           # Create a new list inside the function
+        if initialNumb <= finalNumb:
+            for i in range(initialNumb, finalNumb):
+                rangeDic.append(i)
+            print(rangeDic)
+            return rangeDic                                     # Return the generated list
+    except ValueError:
+        print("Enter number. No string.")
 
 try:
-    #number = int(input('Enter a number: '))
-    number = aralik_icin_sayi_al()
-    numberSqrt = int(sqrt(number))
-    primeNumber = True
+    
+    initialNumb = int(input('enter first numb: '))
+    finalNumb = int(input('enter final numb: '))
 
-    for i in range(2, numberSqrt + 1):
-        if number % i == 0:
-            primeNumber = False
-            break
+    number_list = inputRangeFuction(initialNumb, finalNumb)     # Call the function with arguments and store the result
+    
+                                                                # Iterate through each number in the list and check if it's prime
+    for number in number_list: 
+        numberSqrt = int(sqrt(number))                          # Calculate sqrt for the current number
+        primeNumber = True
+
+        for i in range(2, numberSqrt + 1):
+            if number % i == 0:
+                primeNumber = False
+                break
+
+        primeDic = []
+
+        if primeNumber:
+            for i in range(initialNumb,finalNumb):
+                primeDic.append(i)                              # Modified: Use append correctly
+            print(f"The number {primeDic} is prime.")
+                                                        # Added a print statement to the else block.
         
 except ValueError:
     print('try again with numbers.')
 
 
-if primeNumber:
-    print(f"The number {number} is prime.")
-else:
-    print(f"The number {number} is NOT prime.")
-'''
+if __name__ == "__main__":
+    pass # Remove main() as it's not defined
