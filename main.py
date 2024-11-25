@@ -1,52 +1,44 @@
-# Examples: Find whether an entered number is prime or not.
-
 print('This app checks if the number is prime or not')
+
 from math import sqrt
 
 
-'''The code has been improved but it still does not try the numbers in the range one by one 
-   and add the prime numbers to the primeDic list, instead it prints the range
-'''
-
-def inputRangeFuction(initialNumb, finalNumb):                  # Modified function signature
-    """
-    This function generates a list of numbers within a given range.
-    """
-    try:
-        rangeDic = []                                           # Create a new list inside the function
-        if initialNumb <= finalNumb:
-            for i in range(initialNumb, finalNumb):
-                rangeDic.append(i)
-            print(rangeDic)
-            return rangeDic                                     # Return the generated list
-    except ValueError:
-        print("Enter number. No string.")
-
-try:
+def inputRangeFunction(initialNumb, finalNumb):     # Creates a list containing numbers in the specified range.
     
-    initialNumb = int(input('enter first numb: '))
-    finalNumb = int(input('enter final numb: '))
+    rangeList = []
+    for i in range(initialNumb, finalNumb + 1):     # Added +1 for inclusion of finalNumb
+        rangeList.append(i)
+    return rangeList
 
-    number_list = inputRangeFuction(initialNumb, finalNumb)     # Call the function with arguments and store the result
+
+def find_primes_in_range(initialNumb, finalNumb):   # Finds prime numbers in the specified range and returns them as a list.
     
-                                                                # Iterate through each number in the list and check if it's prime
-    for number in number_list: 
-        numberSqrt = int(sqrt(number))                          # Calculate sqrt for the current number
-        primeNumber = True
+    primeDic = []
+    for number in n(initialNumb, finalNumb):
+        numberSqrt = int(sqrt(number))
+        isPrime = True
 
-        for i in range(2, numberSqrt + 1):
-            if number % i == 0:
-                primeNumber = False
-                break
+        if number < 2:                              # Numbers less than 2 are not prime
+            isPrime = False
+        else:
+            for i in range(2, numberSqrt + 1):
+                if number % i == 0:
+                    isPrime = False
+                    break
 
-        primeDic = []
+        if isPrime:
+            primeDic.append(number)                 # Add the prime number to the primeDic list
 
-        if primeNumber:
-            for i in range(initialNumb,finalNumb):
-                primeDic.append(i)                              # Modified: Use append correctly
-            print(f"The number {primeDic} is prime.")
-                                                                # Added a print statement to the else block.
-        
+    return primeDic
+
+
+try:                                                # Getting input from user
+    initialNumb = int(input('Enter starting number: '))
+    finalNumb = int(input('Enter the ending number: '))
+
+                                                    # Finding and printing prime numbers
+    prime_numbers = find_primes_in_range(initialNumb, finalNumb)
+    print(f"Prime numbers in the specified range: {prime_numbers}")
+
 except ValueError:
-    print('try again with numbers.')
-
+    print('Please enter a number.')
