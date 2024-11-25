@@ -4,6 +4,10 @@ print('This app checks if the number is prime or not')
 from math import sqrt
 
 
+'''The code has been improved but it still does not try the numbers in the range one by one 
+   and add the prime numbers to the primeDic list, instead it prints the range
+'''
+
 def inputRangeFuction(initialNumb, finalNumb):                  # Modified function signature
     """
     This function generates a list of numbers within a given range.
@@ -41,11 +45,8 @@ try:
             for i in range(initialNumb,finalNumb):
                 primeDic.append(i)                              # Modified: Use append correctly
             print(f"The number {primeDic} is prime.")
-                                                        # Added a print statement to the else block.
+                                                                # Added a print statement to the else block.
         
 except ValueError:
     print('try again with numbers.')
 
-
-if __name__ == "__main__":
-    pass # Remove main() as it's not defined
