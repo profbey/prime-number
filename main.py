@@ -2,7 +2,7 @@ print('This app checks if the number is prime or not')
 
 from math import sqrt
 
-def inputRangeFunction(initialNumb, finalNumb):      # Creates a list containing numbers in the specified range.
+def inputRangeFunction(initialNumb, finalNumb):     # Creates a list containing numbers in the specified range.
     
     rangeList = []
     for i in range(initialNumb, finalNumb + 1):     # Added +1 for inclusion of finalNumb
@@ -13,7 +13,7 @@ def inputRangeFunction(initialNumb, finalNumb):      # Creates a list containing
 
 def find_primes_in_range(initialNumb, finalNumb):   # Finds prime numbers in the specified range and returns them as a list.
     
-    primeDic = []
+    primeList = []
     for number in inputRangeFunction(initialNumb, finalNumb):
         numberSqrt = int(sqrt(number))
         isPrime = True
@@ -27,9 +27,9 @@ def find_primes_in_range(initialNumb, finalNumb):   # Finds prime numbers in the
                     break
 
         if isPrime:
-            primeDic.append(number)                 # Add the prime number to the primeDic list
+            primeList.append(number)                # Add the prime number to the primeList list
 
-    return primeDic
+    return primeList
 
 
 
@@ -44,3 +44,10 @@ try:                                                # Get input from user
 
 except ValueError:
     print('Please enter a number.')
+
+
+# At this stage, the last print(prime_numbers) value must be exported as a .txt file.
+# When exporting the .txt file, the name should be 'primeNumbTXT_{initial Numb}_{finalNumb}.txt'
+
+## Two options should be given as query and generation with the interface. 
+## According to the selection, two different code directories should be run.
