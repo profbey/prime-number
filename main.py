@@ -48,7 +48,36 @@ except ValueError:
     
 
 # At this stage, the last print(prime_numbers) value must be exported as a .txt file.
+
+def convert_txt_to_excel(input_txt_file, output_excel_file):
+    import pandas as pd
+    try:
+        with open(input_txt_file, 'r', encoding='utf-8') as file:
+            lines = file.readlines()
+
+        # Her satir için listeyi olustur
+        data = []
+        for line in lines:
+            rows = line.strip().split('*')  # '*' ile ayrilmis satirlari bol
+            parsed_rows = [row.split('/') for row in rows]  # '/' ile her satiri hucrelere bol
+            data.extend(parsed_rows)
+
+        # DataFrame'e donustur
+        df = pd.DataFrame(data)
+
+        # Excel'e yaz
+        df.to_excel(output_excel_file, index=False, header=False)
+        print(f"{output_excel_file} basariyla olusturuldu.")
+    except Exception as e:
+        print(f"Hata: {e}")
+
+# Kullanim
+input_txt_file = "ornek.txt"  # Donusturulecek txt dosyasi
+output_excel_file = "ornek.xlsx"  # Olusacak Excel dosyasi
+convert_txt_to_excel(input_txt_file, output_excel_file)
+
 # When exporting the .txt file, the name should be 'primeNumbTXT_{initial Numb}_{finalNumb}.txt'
+
 
 ## Two options should be given as query and generation with the interface. 
 ## According to the selection, two different code directories should be run.
