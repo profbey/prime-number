@@ -27,7 +27,7 @@ def find_primes_in_range(initialNumb, finalNumb):   # Finds prime numbers in the
                 if number % i == 0:
                     isPrime = False
                     break
-         if isPrime:
+        if isPrime:
 
             primeList.append(number)                # Add the prime number to the primeList list
 
