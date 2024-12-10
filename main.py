@@ -47,7 +47,7 @@ except ValueError:
 
     
 
-# At this stage, the last print(prime_numbers) value must be exported as a .txt file.
+# At this stage, the last print(prime_numbers) value must be exported as a .txt file. ( self init will be added// and connect with this func)
 
 def convert_txt_to_excel(input_txt_file, output_excel_file):
     import pandas as pd
